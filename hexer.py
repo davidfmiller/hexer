@@ -9,8 +9,8 @@ import sys
 class RGB:
   """
   
-
   """
+
   def __init__(self, value):
     """
     
@@ -41,13 +41,15 @@ class RGB:
 
   def toggle(self):
     """
+    Return the opposite representation of a colour (ie: hex if created as rgb(), or vice-versa) 
+
     @return string 
     """
     return self.rgb() if self.isHex else self.hex()
 
   def _d2h(self, n):
     """
-    
+
     @return string - the hexadecimal string representation of integer n
     """
     return "%X" % n
@@ -65,6 +67,10 @@ class RGB:
     return 'rgb(' + str(self.red) + ',' + str(self.green) + ',' + str(self.blue) + ')'
 
   def __str__(self):
+    """
+    
+    @return string
+    """
     return self.hex() if self.isHex else self.rgb()
 
 
