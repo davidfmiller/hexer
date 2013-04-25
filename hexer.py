@@ -29,12 +29,15 @@ class RGB:
       elif (len(value) == 7):
         pass
       else:
-        raise Exception, 'Invalid hex colour: ' + value
+        raise Exception, 'Invalid hex colour: "' + value + '"'
 
     elif (value[0:4] == 'rgb('):
       pass
     else:
-      raise Exception, value + "is not a valid colour"
+      raise Exception, '"' + value + '" is not a valid colour'
+
+#    if (self.red > 255 or self.green > 255 or self.blue or 255 or self.red < 0 or self.green < 0 or self.blue < 0):
+#      raise Exception, value + " is not a valid colour"
 
   def toggle(self):
     """
@@ -42,11 +45,18 @@ class RGB:
     """
     return self.rgb() if self.isHex else self.hex()
 
+  def _d2h(self, n):
+    """
+    
+    @return string - the hexadecimal string representation of integer n
+    """
+    return "%X" % n
+
   def hex(self):
     """
     @return string - the colour declaration in #rrggbb format
     """
-    return '#' + str(self.red) + str(self.blue) + str(self.green)
+    return '#' + self._d2h(self.red) + self._d2h(self.blue) + self._d2h(self.green)
 
   def rgb(self):
     """
@@ -55,15 +65,22 @@ class RGB:
     return 'rgb(' + str(self.red) + ',' + str(self.green) + ',' + str(self.blue) + ')'
 
   def __str__(self):
-    return self.rgb()
+    return self.hex() if self.isHex else self.rgb()
 
-if len(sys.argv) == 1:
-  sys.stderr.write("No colour specified\n")
-  sys.exit(1)
 
-for i in sys.argv[1:]:
-  try:
-    c = RGB(i)
-    print c
-  except Exception, e:
-    print e
+#
+#
+#
+
+if __name__ == '__main__':
+
+  if len(sys.argv) == 1:
+    sys.stderr.write("No colour specified\n")
+    sys.exit(1)
+
+  for i in sys.argv[1:]:
+    try:
+      c = RGB(i)
+      print c.hex()
+    except Exception, e:
+      print e
