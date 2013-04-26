@@ -8,4 +8,4 @@ Example usage:
     % hexer.py '#0ff'
     rgb(0,255,255)
     % hexer.py 'rgb(255,192,3)'
-    
+    #FFC103    
