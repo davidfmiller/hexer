@@ -110,7 +110,6 @@ if __name__ == '__main__':
       colours.append(line.strip())
 
   else:
-
     for i in sys.argv[1:]:
       colours.append(i)
 
