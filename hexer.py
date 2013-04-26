@@ -104,13 +104,23 @@ class RGB:
 
 if __name__ == '__main__':
 
-  if len(sys.argv) == 1:
+  colours = []
+  if not sys.stdin.isatty():
+    for line in sys.stdin:
+      colours.append(line.strip())
+
+  else:
+
+    for i in sys.argv[1:]:
+      colours.append(i)
+
+  if len(colours) == 0:
     sys.stderr.write("No colour specified\n")
     sys.exit(1)
 
-  for i in sys.argv[1:]:
-    try:
+  try:
+    for i in colours:
       c = RGB(i)
       print c.toggle()
-    except Exception, e:
-      print e
+  except Exception, e:
+    sys.stderr.write(i + " is not a valid colour declaration\n")
