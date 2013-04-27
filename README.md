@@ -12,4 +12,4 @@ Example usage:
     % echo '#89cf0a' | hexer.py
     rgb(137,207,10)
 
-Todo: add rgba parsing
+Todo: add rgba parsing, HTML colour keywords (`green`, `blue`, etc.)

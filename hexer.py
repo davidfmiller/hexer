@@ -105,11 +105,13 @@ class RGB:
 if __name__ == '__main__':
 
   colours = []
+  args = False
   if not sys.stdin.isatty():
     for line in sys.stdin:
       colours.append(line.strip())
 
   else:
+    args = True
     for i in sys.argv[1:]:
       colours.append(i)
 
@@ -120,6 +122,6 @@ if __name__ == '__main__':
   try:
     for i in colours:
       c = RGB(i)
-      print c.toggle()
+      sys.stdout.write(c.toggle() + ("\n" if args else ""))
   except Exception, e:
     sys.stderr.write(i + " is not a valid colour declaration\n")
