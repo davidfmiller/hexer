@@ -11,3 +11,5 @@ Example usage:
     #FFC103    
     % echo '#89cf0a' | hexer.py
     rgb(137,207,10)
+
+Todo: add rgba parsing
