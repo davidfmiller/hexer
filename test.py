@@ -18,9 +18,13 @@ class TestRGB(unittest.TestCase):
       }
 
       self.rgb = {
-        'black' : hexer.RGB('rgb(0,0,0)'),
-        'white' : hexer.RGB('rgb(255,255,255)'),
-        'yellow' : hexer.RGB('rgb(255,255,0)')
+        'black' : hexer.RGB('rgb ( 0 , 0 , 0)'),
+        'white' : hexer.RGB('rgb( 255,255,255)'),
+        'yellow' : hexer.RGB('rgb ( 255,   255, 0)')
+      }
+
+      self.rgba = {
+        'yellow' : hexer.RGB('rgba ( 255 ,255, 0 , 0.3 )')
       }
 
     def testHexer(self):
@@ -48,6 +52,8 @@ class TestRGB(unittest.TestCase):
       self.assertEqual(self.rgb['yellow'].hex(), '#FFFF00')
       self.assertEqual(self.rgb['yellow'].rgb(), 'rgb(255,255,0)')
       self.assertEqual(self.rgb['yellow'].toggle(), '#FFFF00')
+
+      self.assertEqual(self.rgba['yellow'].toggle(), '#FFFF00')
 
 if __name__ == '__main__':
     unittest.main()

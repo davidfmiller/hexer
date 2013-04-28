@@ -25,7 +25,7 @@ class RGB:
 
     if (value[0] == '#'):
 
-      self.isHex = True      
+      self.isHex = True
       r = g = b = 0;
 
       if (len(value) == 4):
@@ -47,8 +47,16 @@ class RGB:
       self.green = int(g, 16)
       self.blue  = int(b, 16)
 
-    elif (value[0:4] == 'rgb('):
-      reg = re.compile('rgb\((\d+),(\d+),(\d+)\)')
+    elif (value[0:4] == 'rgba'):
+      reg = re.compile('rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([0-9]*\.[0-9]+|[0-9]+)\s*\)')
+      prog = reg.match(value)
+
+      self.red = int(prog.group(1))
+      self.green = int(prog.group(2))
+      self.blue = int(prog.group(3))
+
+    elif (value[0:3] == 'rgb'):
+      reg = re.compile('rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)')
       prog = reg.match(value)
 
       self.red = int(prog.group(1))
@@ -83,6 +91,24 @@ class RGB:
     """
 
     return ('#' + self._d2h(self.red) + self._d2h(self.green) + self._d2h(self.blue)).upper()
+
+  def red(self):
+    """
+    @return integer
+    """
+    return self.red
+
+  def green(self):
+    """
+    @return integer
+    """
+    return self.green
+
+  def blue(self):
+    """
+    @return integer
+    """
+    return self.blue
 
   def rgb(self):
     """
