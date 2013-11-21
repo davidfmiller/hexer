@@ -69,7 +69,7 @@ class RGB:
     if (self.red > 255 or self.green > 255 or self.blue > 255 or self.red < 0 or self.green < 0 or self.blue < 0):
       raise Exception, '"' + value + '" is not a valid colour'
 
-  def _d2h(self, n):
+  def __d2h(self, n):
     """
 
     @return string - the decimal string representation of integer n
@@ -90,7 +90,7 @@ class RGB:
     @return string - the colour declaration in #rrggbb format
     """
 
-    return ('#' + self._d2h(self.red) + self._d2h(self.green) + self._d2h(self.blue)).upper()
+    return ('#' + self.__d2h(self.red) + self.__d2h(self.green) + self.__d2h(self.blue)).upper()
 
   def red(self):
     """
